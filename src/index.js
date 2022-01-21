@@ -48,14 +48,186 @@
 /**
  * テンプレート文字列
  */
-const name = "じゃけぇ";
-const age = 28;
-// 「私の名前はじゃけぇです。年齢は28歳です。」
+// const name = "じゃけぇ";
+// const age = 28;
+// // 「私の名前はじゃけぇです。年齢は28歳です。」
 
-// 従来の方法
-const message1 = "私の名前は" + name + "です。年齢は" + age + "です。";
-console.log(message1);
+// // 従来の方法
+// const message1 = "私の名前は" + name + "です。年齢は" + age + "です。";
+// console.log(message1);
 
-// テンプレート文字列を用いた方法
-const message2 = `私の名前は${name}です。年齢は${age}です。`;
-console.log(message2);
+// // テンプレート文字列を用いた方法
+// const message2 = `私の名前は${name}です。年齢は${age}です。`;
+// console.log(message2);
+
+/**
+ * アロー関数
+ */
+// 従来の関数
+// function func1(str){
+//   return str;
+// }
+// const func1 = function (str) {
+//   return str;
+// };
+// console.log(func1("func1です"));
+
+// // アロー関数 ※引数が1つの時はstrの外側のカッコは省略可能
+// const func2 = (str) => {
+//   return str;
+// };
+// // 一行で終わる場合は{}とreturnは省略可能
+// // const func2 = (str) => str;
+// console.log(func2("func2です"));
+
+// const func3 = (num1, num2) => {
+//   return num1 + num2;
+// };
+// console.log(func3(10, 20));
+
+/**
+ * 備忘
+ * アロー関数と普通のfunctionではthisを指すのが異なる⇒慣れてきたら調べる
+ */
+
+/**
+ * 分割代入
+ */
+
+// const myProfile = {
+//   name: "じゃけぇ",
+//   age: 28
+// };
+
+// const message1 = `名前は${myProfile.name}です。年齢は${myProfile.age}歳です。`;
+// console.log(message1);
+
+// const {name, age} = myProfile;
+
+// const message2 = `名前は${name}です。年齢は${age}歳です。`;
+// console.log(message2);
+
+// const myProfile = ["じゃけぇ", 28];
+
+// const message3 = `名前は${myProfile[0]}です。年齢は${myProfile[1]}歳です。`;
+// console.log(message3);
+
+// const [name, age] = myProfile;
+// const message4 = `名前は${name}です。年齢は${age}歳です。`;
+// console.log(message4);
+
+// /**
+//  * デフォルト値、引数など
+//  */
+// const sayHello = (name = "ゲスト") => console.log(`こんにちは！${name}さん！`)
+// sayHello("じゃけぇ");
+
+/**
+ * スプレッド構文 ...
+ */
+// 配列の展開
+// const arr1 = [1, 2];
+// console.log(arr1);
+// console.log(...arr1);
+
+// const sumFunc = (num1, num2) => console.log(num1 + num2);
+// sumFunc(arr1[0], arr1[1]);
+// sumFunc(...arr1); //配列の中身を順番に
+
+// まとめる
+// const arr2 = [1, 2, 3, 4, 5];
+// const [num1, num2, ...arr3] = arr2;
+// console.log(num1);
+// console.log(num2);
+// console.log(arr3);
+
+// 配列のコピー、結合
+// const arr4 = [10, 20];
+// const arr5 = [30, 40];
+
+// const arr6 = [...arr4]; //コピー
+// arr6[0] = 100;
+// console.log(arr6);
+// console.log(arr4);
+
+// const arr7 = [...arr4, ...arr5]; //結合
+// console.log(arr7);
+
+// const arr8 = arr4; // 配列ごとコピーすると、arr8の変更がarr4にも影響してしまう //じゃけぇさんのブログ
+// console.log(arr8);
+// arr8[0] = 100;
+// console.log(arr8);
+
+/**
+ * mapやfilterを使った配列の処理
+ */
+// const nameArr = ["草野", "三輪", "じゃけぇ"];
+// for (let index = 0; index < nameArr.length; index++) {
+//   console.log(`${index + 1}番目は${nameArr[index]}です`);
+// }
+
+// const nameArr2 = nameArr.map((name)=>{
+//   return name;
+// })
+// console.log(nameArr2);
+
+// 2つ目の引数には順番indexが入る。省略可
+// nameArr.map((name, index) => console.log(`${index + 1}番目は${name}です`));
+
+// filterは一致したもの
+// const numArr = [1, 2, 3, 4];
+// const newNumArr = numArr.filter((num) => {
+//   return num % 2 === 0; // 条件式に一致したものを返す
+// });
+// console.log(newNumArr);
+
+// const newNameArr = nameArr.map((name) => {
+//   if(name === "じゃけぇ"){
+//     return name;
+//   }
+//   else {
+//     return `${name}さん`
+//   }
+// })
+// console.log(newNameArr);
+
+/**
+ * 三項演算子
+ */
+// ある条件 ? 条件がtrueの時 : 条件がfalseの時
+// const val1 = 1 < 0 ? 'trueです' : 'falseです';
+// console.log(val1);
+
+// const num = 1300;
+// // console.log(num.toLocaleString()); // 3桁カンマ区切りにする
+
+// const formattedNum = typeof num === 'number' ? num.toLocaleString() : '数値を入力してください';
+// console.log(formattedNum);
+
+// const checkSum = (num1, num2) => {
+//   return num1 + num2 > 100 ? "100を超えています！" : "許容範囲内です";
+// };
+// console.log(checkSum(50, 50));
+
+/**
+ * 論理演算子の本当の意味を知ろう && ||
+ */
+const flag1 = true;
+const flag2 = true;
+
+// if (flag1 || flag2) {
+//   console.log("1か2はtrueになります");
+// }
+if (flag1 && flag2) {
+  console.log("1も2もtrueになります");
+}
+
+// || は左側がfalseなら右側を返す（左側がtrueなら左側を返す）
+// const num = null; // nullはjsではfalse
+// const fee = num || "金額未設定です";
+// console.log(fee);
+
+// && は左側がtrueなら右側を返す（左側がfalseなら左側を返す）
+const num2 = 100;
+const fee2 = num2 && "何か設定されました";
+console.log(fee2);
